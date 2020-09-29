@@ -3,7 +3,6 @@ package com.example.mongo.controller;
 import com.example.mongo.entity.GamerEntity;
 import com.example.mongo.service.GamerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.support.MongoRepositoryFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,8 +21,6 @@ public class GamerController {
 
   @RequestMapping("/{game}")
   public String getGame(@PathVariable String game, HttpSession session) {
-    //session.setAttribute("gameKind",game);
-
     return game+"game";
   }
 

@@ -8,8 +8,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @ToString
-@AllArgsConstructor
-@NoArgsConstructor
 @Document(collection = "ScoreInfo")
 public class GamerEntity {
   private String name;
