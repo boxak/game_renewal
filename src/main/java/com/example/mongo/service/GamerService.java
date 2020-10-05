@@ -18,8 +18,8 @@ public class GamerService {
 
   Logger log = LoggerFactory.getLogger(GamerService.class);
 
-  public boolean insert(GamerEntity entityFromBrowser) {
-    boolean result = false;
+  public String insert(GamerEntity entityFromBrowser) {
+    String msg = "";
     GamerEntity entityFromDB = null;
     try {
       entityFromDB = gamerRepository.findByNameAndGameKind(entityFromBrowser.getName(),entityFromBrowser.getGameKind());
@@ -30,11 +30,12 @@ public class GamerService {
           gamerRepository.save(entityFromBrowser);
         }
       }
-      result = true;
+      msg = "점수가 입력되었습니다.";
     } catch(Exception e) {
+      msg = "오류가 발생했습니다!";
       log.info(e.getMessage());
     }
-    return result;
+    return msg;
   }
 
   public List<GamerEntity> findAllByGameKind(String gameKind) {

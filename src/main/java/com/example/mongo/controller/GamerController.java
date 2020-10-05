@@ -27,20 +27,15 @@ public class GamerController {
   @ResponseBody
   @RequestMapping(value="/insertScore",produces="application/json; charset=UTF-8")
   public String insertScore(@ModelAttribute GamerEntity entity) {
-    boolean result = gamerService.insert(entity);
-    String msg = "";
-    if(result) msg = "점수가 입력되었습니다.";
-    else msg = "오류가 발생했습니다!";
-    return msg;
+    return gamerService.insert(entity);
   }
 
   @RequestMapping("/rankingBoard")
   public ModelAndView listAll(String gameKind) {
     List<GamerEntity> gamerList = gamerService.findAllByGameKind(gameKind);
-    ModelAndView mav = new ModelAndView();
+    ModelAndView mav = new ModelAndView("rankingBoard");
     mav.addObject("gameKind",gameKind);
     mav.addObject("gamerList",gamerList);
-    mav.setViewName("rankingBoard");
     return mav;
   }
 }
